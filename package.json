@@ -1,0 +1,30 @@
+{
+  "name": "aimee",
+  "description": "Web前端开发框架",
+  "main": "aimee.js",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "aimee -v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gavinning/aimee.git"
+  },
+  "keywords": [
+    "aimee"
+  ],
+  "author": "gavinning",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/gavinning/aimee/issues"
+  },
+  "homepage": "https://github.com/gavinning/aimee",
+  "dependencies": {
+      "aimee-is": "*",
+      "aimee-extend": "*",
+      "aimee-class": "*",
+      "aimee-pm": "*",
+      "aimee-page": "*",
+      "aimee-app": "*"
+  }
+}
