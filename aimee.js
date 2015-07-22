@@ -8,28 +8,55 @@ aimee.guid = require('./lib/guid');
 aimee.extend = require('./lib/extend');
 aimee.Class = require('./lib/class');
 aimee.Router = require('./lib/router');
+aimee.config = require('./lib/config');
 
-aimee.reg = function(id, src){
-	src ?
-		this[id] = require(src):
-		this[id] = require(id);
-	return this;
+// 注册全局Widget-app模块
+aimee.reg = function(name, id){
+    var app, App;
+    var pm = require('pm');
+    var place = aimee.config.get('app.place');
+
+    if(!id){
+        id = name;
+    }
+
+    // 检查id是否为Widget-app
+    typeof id === 'string' ?
+        App = require(id):
+        App = id;
+
+    // 全局Widget-app全局唯一，所以返回实例即可
+    app = new App;
+
+    // 查找是否已注册
+    place[name] ?
+        app.init().render(place[name]):
+        app.init().appendTo('body');
+
+    // 注册到PM
+    pm.app[name] = app;
+
+    return this;
 }
 
+// 设置全局config数据模型
+aimee.config.set('config', {
+    // 当前环境
+    env: 'online',
+
+    // 全局app
+    app: {
+        // 注册全局app的位置信息
+        place: {
+            header: '#lincoapp-id-header',
+            footer: '#lincoapp-id-footer'
+        }
+    }
+})
+
+// 获取全局配置
 aimee.getConfig = function(){
-	return config;
+    return aimee.config.get();
 }
-
-// Config配置文件
-aimee.config = {
-	set: function(key, value){
-		config[key] = value;
-	},
-
-	get: function(key){
-		return config[key];
-	}
-}
-
 
 module.exports = aimee;
