@@ -40,7 +40,7 @@ aimee.reg = function(name, id){
 }
 
 // 设置全局config数据模型
-aimee.config.set('config', {
+aimee.config.init({
     // 当前环境
     env: 'online',
 
