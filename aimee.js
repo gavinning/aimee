@@ -25,13 +25,29 @@ aimee.reg = function(name, id){
         App = require(id):
         App = id;
 
+    // 检查App是否是widget-app
+    // eg: autoscreen
+    if(!App.aimee){
+        return this;
+    }
+
     // 全局Widget-app全局唯一，所以返回实例即可
     app = new App;
 
-    // 查找是否已注册
-    place[name] ?
-        app.init().render(place[name]):
+    // 查找是否已注册占位符
+    if(place[name]){
+        app.init().render(place[name])
+    }
+
+    // 检查是否存在相应规则的占位符
+    // 没有占位符则默认插入到body
+    else{
+        var stringId = aimee.config.get('app.renderString') + name;
+        var isExist = !!document.querySelector(stringId);
+        isExist ?
+            app.init().render(stringId):
         app.init().appendTo('body');
+    }
 
     // 注册到PM
     pm.app[name] = app;
@@ -46,6 +62,7 @@ aimee.config.init({
 
     // 全局app
     app: {
+        renderString: '#lincoapp-id-',
         // 注册全局app的位置信息
         place: {
             header: '#lincoapp-id-header',
