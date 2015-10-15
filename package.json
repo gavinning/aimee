@@ -1,5 +1,6 @@
 {
   "name": "aimee",
+  "aimee": "app",
   "description": "Web前端开发框架",
   "main": "aimee.js",
   "version": "1.0.0",

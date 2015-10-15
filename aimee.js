@@ -68,7 +68,11 @@ aimee.config.init({
             header: '#lincoapp-id-header',
             footer: '#lincoapp-id-footer'
         }
-    }
+    },
+
+    // Item
+    selected: 'selected',
+    _selected: '.selected'
 })
 
 // 获取全局配置
