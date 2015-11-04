@@ -1,14 +1,20 @@
+/**
+ * Aimee for Aimeejs
+ * Author by gavinning
+ * Homepage https://github.com/Aimeejs/aimee
+ */
+
 var aimee = {};
 var config = {};
 
 aimee.name = 'aimee';
 aimee.version = '1.0.0';
-aimee.is = require('./lib/is');
-aimee.guid = require('./lib/guid');
-aimee.extend = require('./lib/extend');
-aimee.Class = require('./lib/class');
-aimee.Router = require('./lib/router');
-aimee.config = require('./lib/config');
+aimee.is = require('is');
+aimee.guid = require('guid');
+aimee.extend = require('extend');
+aimee.config = require('config');
+aimee.router = require('router');
+aimee.Class = require('class');
 
 // 注册全局Widget-app模块
 aimee.reg = function(name, id){
